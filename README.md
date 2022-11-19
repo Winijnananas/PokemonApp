@@ -6,6 +6,7 @@ Workshop
  1. ใช้คำสั่ง `clone https://github.com/JcsnP/PokemonApp.git` ใน Terminal
  2. ใช้คำสั่ง `cd PokemonApp` เพื่อเข้าไปยังโฟลเดอร์โปรเจค
  3. ใช้คำสั่ง `npm install` เพื่อติดตั้งแพคเกจ
+ 4. ใช้คำสั่ง `npx expo start` เพื่อรันโปรเจค
 
 # เริ่มต้นสร้างโปรเจค
 ## 1. Create a new expo app
