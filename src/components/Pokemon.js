@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         width: '40%',
         alignItems:'center',
         marginVertical: 14,
-        borderRadius: 7,
+        borderRadius: 3,
     },
     typeText:{
         color:'white',
