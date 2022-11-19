@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     searchButton: {
-        borderRadius: 7,
+        borderRadius: 5,
         padding: 6,
         backgroundColor: "#3682FF",
         width: "96%",
@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
 ## components/Pokemon.js
 ### import แพคเกจ
 ```js
-import { View, Text ,FlatList, Image,StyleSheet, SafeAreaView} from 'react-native'
+import { View, Text , Image,StyleSheet } from 'react-native'
 import React from 'react'
 ```
 
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
         width: '40%',
         alignItems:'center',
         marginVertical: 14,
-        borderRadius: 7,
+        borderRadius: 3,
     },
     typeText:{
         color:'white',
