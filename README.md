@@ -3,7 +3,6 @@
 Workshop
 
 การนำโปรเจคที่เสร็จสมบูรณ์ไปใช้งาน
-
  1. ใช้คำสั่ง `clone https://github.com/JcsnP/PokemonApp.git` ใน Terminal
  2. ใช้คำสั่ง `cd PokemonApp` เพื่อเข้าไปยังโฟลเดอร์โปรเจค
  3. ใช้คำสั่ง `npm install` เพื่อติดตั้งแพคเกจ
@@ -117,7 +116,7 @@ getTypes = (types)=> types.map(({slot,type}) => ({
 }))
 ```
 
-### สร้างฟังก์ชันสำหรับการหาคำอธิบาย
+### สร้างฟังก์ชันสำหรับการหาคำอธิบายของ Pokemon
 ```js
 getDescription = (entries) => entries.find((item)=>item.language.name === 'en').flavor_text;
 ```
