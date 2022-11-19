@@ -1,4 +1,4 @@
-import { View, Text, TextInput, SafeAreaView, Alert, StyleSheet, ActivityIndicator, Button, placeholder, Image, TouchableOpacity, StatusBar } from 'react-native'
+import { View, Text, TextInput, SafeAreaView, Alert, StyleSheet, ActivityIndicator, Button, placeholder, Image, TouchableOpacity, StatusBar, Keyboard } from 'react-native'
 import React, { Component } from 'react';
 
 import pokemon from 'pokemon';
@@ -32,6 +32,7 @@ export default class Main extends Component {
                                 onChangeText={(searchInput)=> this.setState({searchInput})}
                                 onSubmitEditing={this.searchPokemon}
                                 value={this.state.searchInput}
+                                clearButtonMode="always"
                             />
                         </View>
                         <View style={styles.buttonContainer}>
@@ -45,7 +46,7 @@ export default class Main extends Component {
                     <View style={styles.mainContainer}>
                         {isLoading && <ActivityIndicator size="large" color="green"/>}
 
-                        {!isLoading &&(
+                        {!isLoading && (
                             <Pokemon name={name} pic={pic} types={types} desc={desc}/>
                         )}
                     </View>
@@ -56,6 +57,8 @@ export default class Main extends Component {
 
     searchPokemon = async()=>{
         try{
+            // ซ่อน keyboard หลังจากผู้ใช้กดปุ่มค้นหา
+            Keyboard.dismiss()
             // รับไอดีของโปเกมอนตัวนั้นมาจากชื่อที่กรอกไปใน testInput
             const pokemonID = pokemon.getId((this.state.searchInput.charAt(0).toUpperCase() + this.state.searchInput.slice(1)))
 
