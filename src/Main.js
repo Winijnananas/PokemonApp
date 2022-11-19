@@ -24,7 +24,7 @@ export default class Main extends Component {
         return (
             <SafeAreaView style={styles.wrapper}>
                <View style={styles.container}>
-               <Image style={styles.image} source={require('../assets/poke.png')} />
+               <Image style={styles.image} source={{uri: 'https://user-images.githubusercontent.com/37466531/202855683-08bb0351-2ac9-486c-8424-9e68b8f71ece.png'}} />
                     <View style={styles.headContainer}>
                         <View style={styles.textInpuTContainer}>
                             <TextInput style={styles.textInput}
