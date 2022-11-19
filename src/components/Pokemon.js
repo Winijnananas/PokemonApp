@@ -1,12 +1,12 @@
 import { View, Text ,FlatList, Image,StyleSheet, SafeAreaView} from 'react-native'
 import React from 'react'
 
-const Pokemon =({name,pic, types, desc})=>{
+export default Pokemon = ({name,pic, types, desc})=>{
     // ทำให้รายละเอียดเปลี่ยนจากหลายบรรทัดเป็นบรรทัดเดียว
     desc = desc.replace(/\n/g, ' ')
     return(
         <View style={styles.mainDetails}>
-            <Image style={styles.image} source={{uri: pic.length == 0 ? undefined : pic}} resizeMode="contain" />
+            <Image style={styles.image} source={{uri: pic.length === 0 ? undefined : pic}} resizeMode="contain" />
             <Text style={styles.name}>{name.charAt(0).toUpperCase() + name.slice(1)}</Text>
             <View style={styles.typesContainer}>
                 {
@@ -25,8 +25,6 @@ const Pokemon =({name,pic, types, desc})=>{
         </View>
     );
 }
-
-export default Pokemon;
 
 const styles = StyleSheet.create({
     mainDetails:{
@@ -74,7 +72,8 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     description:{
-        paddingHorizontal: 30
+        paddingHorizontal: 30,
+        marginTop: 15
     },
     descriptionText: {
         textAlign: 'justify',
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     flying:{
         backgroundColor:'#a890f0'
     },
-    physic:{
+    psychic:{
         backgroundColor:'#f85888'
     },
     bug:{

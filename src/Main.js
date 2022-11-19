@@ -10,7 +10,6 @@ const POKE_API_URL = 'https://pokeapi.co/api/v2';
 export default class Main extends Component {
     constructor(props) {
         super(props)
-
         this.state={
             isLoading:false,
             searchInput:'',
@@ -53,8 +52,8 @@ export default class Main extends Component {
                </View>
             </SafeAreaView>
         );
-
     }
+
     searchPokemon = async()=>{
         try{
             // รับไอดีของโปเกมอนตัวนั้นมาจากชื่อที่กรอกไปใน testInput
@@ -87,19 +86,17 @@ export default class Main extends Component {
     //สร้างfunctiongetType
     //รับค่าparameter
     getTypes = (types)=> types.map(({slot,type}) => ({
-            id:slot,
-            name: type.name
-        }))
-    
+        id:slot,
+        name: type.name
+    }))
 
     //function description
-    getDescription = (entries) =>
-        entries.find((item)=>item.language.name === 'en').flavor_text;
+    getDescription = (entries) => entries.find((item)=>item.language.name === 'en').flavor_text;
 }
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex:1
+        flex:1,
     },
     container: {
         flex:1,
@@ -107,9 +104,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#FFF'
     },
     headContainer:{
-        flex:1,
+        display: 'flex',
         flexDirection:'row',
-        marginTop:20
+        marginTop:20,
     },
     textInpuTContainer:{
         flex:2
@@ -127,7 +124,7 @@ const styles = StyleSheet.create({
         borderWidth:1,
         backgroundColor:'#eaeaea',
         padding:5,
-        borderRadius:10
+        borderRadius: 7,
     },
     image:{
         width:100,
@@ -135,15 +132,14 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     searchButton: {
-        borderWidth: 0,
-        borderRadius: 20,
+        borderRadius: 7,
         padding: 6,
         backgroundColor: "#BF1700",
-        width: "100%",
+        width: "96%",
         alignItems: "center",
         color: "white",
         fontWeight: 'bold',
-        left:10,
+        marginHorizontal: 4
     },
 })
 
