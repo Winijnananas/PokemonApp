@@ -6,13 +6,13 @@ const Pokemon =({name,pic, types, desc})=>{
     desc = desc.replace(/\n/g, ' ')
     return(
         <View style={styles.mainDetails}>
-            <Image style={styles.image} source={{uri: pic}} resizeMode="contain" />
-            <Text style={styles.matinText}>{name.charAt(0).toUpperCase() + name.slice(1)}</Text>
+            <Image style={styles.image} source={{uri: pic.length == 0 ? undefined : pic}} resizeMode="contain" />
+            <Text style={styles.name}>{name.charAt(0).toUpperCase() + name.slice(1)}</Text>
             <View style={styles.typesContainer}>
                 {
                 types.map((item, key) => (
                     <View style={[styles[item.name],styles.type]} key={key}>
-                        <Text style={styles.typeText}>{item.name.charAt(0) + item.name.slice(1)}</Text>
+                        <Text style={styles.typeText}>{item.name.charAt(0).toUpperCase() + item.name.slice(1)}</Text>
                     </View>
                 ))
                 }
@@ -34,15 +34,23 @@ const styles = StyleSheet.create({
         height: '100%',
         alignSelf: 'center',
         backgroundColor: '#F7F7F7',
-        borderRadius: 7
+        borderRadius: 7,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 2,
     },
     image:{
         marginTop: 10,
-        width:200,
-        height:200,
+        width:210,
+        height:210,
         alignSelf: 'center'
     },
-    matinText:{
+    name:{
         fontSize:30,
         fontWeight:'bold',
         textAlign:'center'
@@ -58,7 +66,7 @@ const styles = StyleSheet.create({
         width: '40%',
         alignItems:'center',
         marginVertical: 14,
-        borderRadius: 7
+        borderRadius: 7,
     },
     typeText:{
         color:'white',
@@ -70,8 +78,8 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         textAlign: 'justify',
-        fontSize: 16,
-        fontWeight: 'bold'
+        fontSize: 18,
+        fontWeight: 'bold',
     },
     normal:{
         backgroundColor:'#A8A878'

@@ -22,7 +22,7 @@ export default class Main extends Component {
     }
     render() {
         const{ name,pic,types,desc,searchInput,isLoading } = this.state
-        return (       
+        return (
             <SafeAreaView style={styles.wrapper}>
                <View style={styles.container}>
                <Image style={styles.image} source={require('../assets/poke.png')} />
@@ -31,6 +31,7 @@ export default class Main extends Component {
                             <TextInput style={styles.textInput}
                                 placeholder='Pokemon Name'
                                 onChangeText={(searchInput)=> this.setState({searchInput})}
+                                onSubmitEditing={this.searchPokemon}
                                 value={this.state.searchInput}
                             />
                         </View>
@@ -51,7 +52,6 @@ export default class Main extends Component {
                     </View>
                </View>
             </SafeAreaView>
-
         );
 
     }
@@ -96,6 +96,7 @@ export default class Main extends Component {
     getDescription = (entries) =>
         entries.find((item)=>item.language.name === 'en').flavor_text;
 }
+
 const styles = StyleSheet.create({
     wrapper: {
         flex:1
