@@ -87,6 +87,7 @@ export default class Main extends Component {
         }
     }
     //สร้างfunctiongetType
+    //รับค่าparameter
     getTypes = (types)=> types.map(({slot,type}) => ({
         id:slot,
         name: type.name
