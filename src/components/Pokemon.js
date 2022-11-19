@@ -2,29 +2,27 @@ import { View, Text ,FlatList, Image,StyleSheet, SafeAreaView} from 'react-nativ
 import React from 'react'
 
 const Pokemon =({name,pic, types, desc})=>{
+    // ทำให้รายละเอียดเปลี่ยนจากหลายบรรทัดเป็นบรรทัดเดียว
+    desc = desc.replace(/\n/g, ' ')
     return(
-        <SafeAreaView>
         <View style={styles.mainDetails}>
-            <Image style={styles.image} source={{url:pic}} resizeMode="contain"/>
+            <Image style={styles.image} source={{uri: pic}} resizeMode="contain" />
             <Text style={styles.matinText}>{name.charAt(0).toUpperCase() + name.slice(1)}</Text>
-            <FlatList
-                // columnWrapperStyle={styles.types}
-                data={types}
-                // numColumns={2}
-                keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item})=> (
-                    <View style={[styles[item.name],styles.type]}>
-                        <Text style={styles.typeText}>{item.name}</Text>
+            <View style={styles.typesContainer}>
+                {
+                types.map((item, key) => (
+                    <View style={[styles[item.name],styles.type]} key={key}>
+                        <Text style={styles.typeText}>{item.name.charAt(0) + item.name.slice(1)}</Text>
                     </View>
-                )}
-            />
+                ))
+                }
+            </View>
             <View style={styles.description}>
-                <Text>
+                <Text style={styles.descriptionText}>
                     {desc}
                 </Text>
             </View>
         </View>
-    </SafeAreaView>
     );
 }
 
@@ -32,44 +30,51 @@ export default Pokemon;
 
 const styles = StyleSheet.create({
     mainDetails:{
-        padding:30,
-        alignItem:'center'
+        width: '100%',
+        height: '100%',
+        alignSelf: 'center',
+        backgroundColor: '#F7F7F7',
+        borderRadius: 7
     },
     image:{
+        marginTop: 10,
         width:200,
         height:200,
-        left:60
-
+        alignSelf: 'center'
     },
     matinText:{
         fontSize:30,
         fontWeight:'bold',
         textAlign:'center'
     },
-    description:{
-        marginTop:20,
-        left:50,
-    },
-    types:{
-        flexDirection:'row',
-        marginTop:20
+    typesContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly'
     },
     type:{
-        padding:5,
-        width:100,
+        padding: 5,
+        width: '40%',
         alignItems:'center',
-        left:110,
-        marginTop:10,
-        
+        marginVertical: 14,
+        borderRadius: 7
     },
     typeText:{
         color:'white',
         fontWeight:'bold',
         fontSize:20
-        // left:110
+    },
+    description:{
+        paddingHorizontal: 30
+    },
+    descriptionText: {
+        textAlign: 'justify',
+        fontSize: 16,
+        fontWeight: 'bold'
     },
     normal:{
-        backgroundColor:'#8a8s59'
+        backgroundColor:'#A8A878'
     },
     fire:{
         backgroundColor:'#f08030'
@@ -79,7 +84,6 @@ const styles = StyleSheet.create({
     },
     electric:{
         backgroundColor:"#f8d030",
-
     },
     grass:{
         backgroundColor:'#78c850'
@@ -123,8 +127,4 @@ const styles = StyleSheet.create({
     fairy:{
         backgroundColor:'#e898e8'
     }
-
-
-    
-
 });

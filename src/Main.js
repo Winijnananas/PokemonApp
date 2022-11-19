@@ -1,17 +1,4 @@
-import {
-    View,
-    Text,
-    TextInput,
-    SafeAreaView,
-    Alert,
-    StyleSheet,
-    ActivityIndicator,
-    Button,
-    placeholder,
-    Image,
-    TouchableOpacity,
-    StatusBar
-} from 'react-native'
+import { View, Text, TextInput, SafeAreaView, Alert, StyleSheet, ActivityIndicator, Button, placeholder, Image, TouchableOpacity, StatusBar } from 'react-native'
 import React, { Component } from 'react';
 
 import pokemon from 'pokemon';
@@ -42,27 +29,20 @@ export default class Main extends Component {
                     <View style={styles.headContainer}>
                         <View style={styles.textInpuTContainer}>
                             <TextInput style={styles.textInput}
-                                placeholder='PokemonName '
+                                placeholder='Pokemon Name'
                                 onChangeText={(searchInput)=> this.setState({searchInput})}
                                 value={this.state.searchInput}
                             />
                         </View>
                         <View style={styles.buttonContainer}>
-                            <TouchableOpacity style={styles.loginBtn}
+                            <TouchableOpacity style={styles.searchButton}
                                 onPress={this.searchPokemon}
                             >
-                            <Text style={{ color: "white", fontWeight: 'bold', fontSize: 19 }}>SEARCH</Text>
+                                <Text style={{ color: "white", fontWeight: 'bold', fontSize: 19 }}>SEARCH</Text>
                             </TouchableOpacity>
-                            {/* <Button 
-                            title='Search'
-                            color='black'
-                            // color='#0064e1'
-                            onPress={this.searchPokemon}
-                            /> */}
                         </View>
                     </View>
                     <View style={styles.mainContainer}>
-                        
                         {isLoading && <ActivityIndicator size="large" color="green"/>}
 
                         {!isLoading &&(
@@ -77,13 +57,14 @@ export default class Main extends Component {
     }
     searchPokemon = async()=>{
         try{
+            // รับไอดีของโปเกมอนตัวนั้นมาจากชื่อที่กรอกไปใน testInput
             const pokemonID = pokemon.getId((this.state.searchInput.charAt(0).toUpperCase() + this.state.searchInput.slice(1)))
 
             this.setState({isLoading:true})
             
             //ยิงget request
             const { data: pokemonData} = await axios.get(`${POKE_API_URL}/pokemon/${pokemonID}`)
-                //เข้าถึงApiไปยังpathpokemonละดึงIDมา
+            //เข้าถึงApiไปยังpathpokemonละดึงIDมา
             const { data: pokemonSpecieData} = await axios.get(`${POKE_API_URL}/pokemon-species/${pokemonID}`)
 
 
@@ -91,13 +72,12 @@ export default class Main extends Component {
             const { name, sprites, types}= pokemonData
             const { flavor_text_entries }= pokemonSpecieData
 
-
             this.setState({
                 name,
                 pic : sprites.front_default,
-                types:this.getTypes(types),
-                desc:this.getDescription(flavor_text_entries),
-                isLoading:false
+                types: this.getTypes(types),
+                desc: this.getDescription(flavor_text_entries),
+                isLoading: false
             })
             
         }catch(err){
@@ -117,10 +97,10 @@ export default class Main extends Component {
         entries.find((item)=>item.language.name === 'en').flavor_text;
 }
 const styles = StyleSheet.create({
-    wrapper:{
+    wrapper: {
         flex:1
     },
-    container:{
+    container: {
         flex:1,
         padding:20,
         backgroundColor:'#FFF'
@@ -151,23 +131,18 @@ const styles = StyleSheet.create({
     image:{
         width:100,
         height:100,
-        left:130,
-        alignItems:'center',
-        marginTop:10
-    },loginBtn: {
+        alignSelf: 'center'
+    },
+    searchButton: {
         borderWidth: 0,
         borderRadius: 20,
-        padding: 10,
+        padding: 6,
         backgroundColor: "#BF1700",
-        width: "80%",
+        width: "100%",
         alignItems: "center",
         color: "white",
         fontWeight: 'bold',
-        marginBottom:10,
         left:10,
-        bottom:2
-        
-      },
-
+    },
 })
 
