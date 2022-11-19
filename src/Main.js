@@ -28,7 +28,7 @@ export default class Main extends Component {
                     <View style={styles.headContainer}>
                         <View style={styles.textInpuTContainer}>
                             <TextInput style={styles.textInput}
-                                placeholder='EnterNamePokemon here'
+                                placeholder='Pokemon Name'
                                 onChangeText={(searchInput)=> this.setState({searchInput})}
                                 onSubmitEditing={this.searchPokemon}
                                 value={this.state.searchInput}
@@ -145,4 +145,3 @@ const styles = StyleSheet.create({
         marginHorizontal: 4
     },
 })
-

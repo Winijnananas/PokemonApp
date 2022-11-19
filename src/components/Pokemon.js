@@ -25,7 +25,7 @@ export default Pokemon = ({name,pic, types, desc})=>{
         </View>
     );
 }
-
+//style ตกเเต่งหน้าPokemon
 const styles = StyleSheet.create({
     mainDetails:{
         width: '100%',
