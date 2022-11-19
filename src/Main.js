@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     searchButton: {
-        borderRadius: 5,
+        borderRadius: 7,
         padding: 6,
         backgroundColor: "#3682FF",
         width: "96%",
