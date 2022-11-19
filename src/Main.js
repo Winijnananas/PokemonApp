@@ -28,7 +28,7 @@ export default class Main extends Component {
                     <View style={styles.headContainer}>
                         <View style={styles.textInpuTContainer}>
                             <TextInput style={styles.textInput}
-                                placeholder='PokemonName HERE'
+                                placeholder='EnterNamePokemon here'
                                 onChangeText={(searchInput)=> this.setState({searchInput})}
                                 onSubmitEditing={this.searchPokemon}
                                 value={this.state.searchInput}
